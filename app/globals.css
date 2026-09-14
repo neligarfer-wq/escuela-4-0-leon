@@ -88,3 +88,11 @@
 @media (max-width: 640px) {
   .officialCta { width: 100%; }
 }
+
+
+.trainingResourceCard {
+  background: linear-gradient(120deg, #a9410b 0%, #e76616 54%, #f39a22 100%);
+}
+.trainingResourceCard .icon {
+  color: #d85b12;
+}
