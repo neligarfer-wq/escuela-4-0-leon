@@ -96,3 +96,19 @@
 .trainingResourceCard .icon {
   color: #d85b12;
 }
+
+
+.featuredActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: .45rem 0 .2rem;
+}
+.featuredActions .officialCta {
+  margin: .7rem 0;
+}
+@media (max-width: 640px) {
+  .featuredActions {
+    display: grid;
+  }
+}
