@@ -261,7 +261,7 @@
   z-index: 3;
   width: clamp(135px,13vw,195px);
   right: -22px;
-  bottom: -6px;
+  bottom: -52px;
   transform: rotate(3deg);
   filter: drop-shadow(0 16px 20px rgba(21,49,61,.18));
   pointer-events: none;
@@ -275,14 +275,14 @@
   .heroV2 h1 { font-size: clamp(3rem,11vw,5rem); }
   .quickLinks { grid-template-columns: repeat(3,1fr); max-width: none; }
   .heroVisual { max-width: 610px; width: 100%; margin-inline: auto; }
-  .heroLogoDetail { width: 170px; right: -18px; }
+  .heroLogoDetail { width: 170px; right: -18px; bottom: -48px; }
 }
 @media(max-width:620px) {
   .heroV2 h1 { font-size: clamp(3rem,15vw,4rem); }
   .quickLinks { grid-template-columns: 1fr; }
   .quickLinks a { min-height: 48px; }
   .heroVisual { padding-bottom: 50px; }
-  .heroLogoDetail { width: 135px; right: -8px; bottom: 0; }
+  .heroLogoDetail { width: 125px; right: -4px; bottom: -38px; }
   .heroV2 .pathCard { padding: 24px 20px 34px; }
   .heroV2 .pathStep { align-items: flex-start; }
 }
