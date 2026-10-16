@@ -289,3 +289,30 @@
 @media(prefers-reduced-motion:reduce) {
   .heroV2 .primary,.heroV2 .secondary,.quickLinks a { transition: none; }
 }
+
+
+/* Aviso de formación CRFPTIC con inscripción abierta */
+.openTraining{
+  margin:0 max(24px,calc((100vw - 1180px)/2));
+  transform:translateY(-30px);
+  position:relative;
+  z-index:4;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:34px;
+  padding:28px 32px;
+  border-radius:22px;
+  background:linear-gradient(120deg,#fff7d8 0%,#fff 58%,#e9f6f7 100%);
+  border:1px solid #eadb9f;
+  box-shadow:0 18px 42px rgba(21,49,61,.13);
+}
+.openTraining h2{font-size:clamp(1.55rem,2.7vw,2.35rem);letter-spacing:-.035em;line-height:1.08;margin:8px 0 10px}
+.openTraining p{margin:0;color:var(--muted);line-height:1.55}
+.openTraining ul{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;list-style:none;padding:0;margin:18px 0 0}
+.openTraining li{padding:12px 13px;border-radius:13px;background:#fff;border:1px solid var(--line);font-size:.86rem;font-weight:800;line-height:1.35}
+.openTraining li span{display:block;margin-top:5px;color:var(--teal);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.openTrainingCta{min-height:50px;white-space:nowrap;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.openTrainingCta:hover{background:var(--teal-dark)}
+@media(max-width:900px){.openTraining{grid-template-columns:1fr;transform:none;margin:24px}.openTraining ul{grid-template-columns:1fr}.openTrainingCta{width:fit-content}}
+@media(max-width:620px){.openTraining{margin:16px;padding:23px 20px}.openTrainingCta{width:100%}}
