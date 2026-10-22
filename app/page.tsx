@@ -82,8 +82,9 @@ export default function Home(){
       <article className="trainingUpdateCard">
         <div>
           <span className="trainingStatus">Próxima formación</span>
-          <h3>Semana II</h3>
-          <p className="trainingDates">Del 23 al 26 de noviembre</p>
+          <h3>Formación específica presencial del CFIE de León</h3>
+          <p className="trainingLocation">En sus instalaciones</p>
+          <p className="trainingDates"><strong>Semana II:</strong> del 23 al 26 de noviembre</p>
         </div>
         <p className="trainingCall"><strong>Convocatoria:</strong> próximamente.</p>
       </article>
