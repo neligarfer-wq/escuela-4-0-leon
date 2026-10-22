@@ -289,3 +289,31 @@
 @media(prefers-reduced-motion:reduce) {
   .heroV2 .primary,.heroV2 .secondary,.quickLinks a { transition: none; }
 }
+
+
+/* Formación Escuela 4.0: convocatorias disponibles y próximas */
+.trainingUpdates{
+  margin:0 max(24px,calc((100vw - 1180px)/2));
+  transform:translateY(-30px);
+  position:relative;
+  z-index:4;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  align-items:center;
+  gap:36px;
+  padding:30px 32px;
+  border:1px solid #cfe3e3;
+  border-radius:24px;
+  background:linear-gradient(120deg,#ffffff 0%,#f5fbfa 58%,#e6f5f5 100%);
+  box-shadow:0 18px 42px rgba(21,49,61,.12);
+}
+.trainingUpdatesIntro h2{font-size:clamp(1.7rem,3vw,2.55rem);line-height:1.06;letter-spacing:-.04em;margin:9px 0 12px}
+.trainingUpdatesIntro p{max-width:690px;margin:0;color:var(--muted);line-height:1.6}
+.trainingUpdateCard{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 24px;border-radius:18px;background:var(--ink);color:#fff;box-shadow:0 12px 28px rgba(21,49,61,.18)}
+.trainingUpdateCard h3{margin:10px 0 4px;font-size:1.5rem}
+.trainingStatus{display:inline-flex;padding:6px 9px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em}
+.trainingDates{margin:0;color:#bfe0e2;font-weight:800}
+.trainingCall{flex:none;margin:0;padding-left:22px;border-left:1px solid rgba(255,255,255,.22);line-height:1.45}
+.trainingCall strong{display:block;color:#8ee5e9;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+@media(max-width:900px){.trainingUpdates{grid-template-columns:1fr;transform:none;margin:24px}.trainingUpdateCard{max-width:650px}}
+@media(max-width:620px){.trainingUpdates{margin:16px;padding:24px 20px}.trainingUpdateCard{align-items:flex-start;flex-direction:column}.trainingCall{width:100%;padding:16px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.22)}}
