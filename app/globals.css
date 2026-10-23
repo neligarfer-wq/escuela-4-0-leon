@@ -334,3 +334,13 @@
 .safetyCardBody a:hover{background:var(--teal-dark)}
 @media(max-width:1000px){.safetyCardBody{justify-content:flex-start}}
 @media(max-width:700px){.safetyGrid{grid-template-columns:1fr}.safetyPreview{aspect-ratio:1055/1491;padding:10px}.safetyPreview img{width:100%!important;height:100%!important;object-fit:contain!important}.safetyCardBody a{width:100%;justify-content:center}}
+
+
+/* Acceso permanente a la plataforma formativa SMART Academy */
+.academyAccess{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 22px;border:1px solid #b8d9db;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 8px 22px rgba(21,49,61,.07);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.academyAccess:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 12px 28px rgba(21,49,61,.12)}
+.academyAccess>span:first-child{display:flex;flex-direction:column;gap:4px}
+.academyAccess strong{font-size:1rem;color:var(--teal-dark)}
+.academyAccess small{color:var(--muted);font-size:.86rem}
+.academyAccessCta{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;border-radius:999px;background:var(--teal);color:#fff;font-size:.84rem;font-weight:900;white-space:nowrap}
+@media(max-width:620px){.academyAccess{align-items:flex-start;flex-direction:column}.academyAccessCta{width:100%;justify-content:center}}
