@@ -318,3 +318,19 @@
 .trainingCall strong{display:block;color:#8ee5e9;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
 @media(max-width:900px){.trainingUpdates{grid-template-columns:1fr;transform:none;margin:24px}.trainingUpdateCard{max-width:650px}}
 @media(max-width:620px){.trainingUpdates{margin:16px;padding:24px 20px}.trainingUpdateCard{align-items:flex-start;flex-direction:column}.trainingCall{width:100%;padding:16px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.22)}}
+
+
+/* Infografías descargables de uso seguro */
+.safetyDownloads{background:#fff}
+.safetyGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.safetyCard{display:grid;grid-template-columns:minmax(180px,.72fr) 1fr;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#f7fbfa;box-shadow:0 12px 34px rgba(21,49,61,.09)}
+.safetyPreview{min-height:400px;padding:18px;display:flex;align-items:center;justify-content:center;background:#e7f3f2}
+.safetyPreview img{display:block;width:100%;height:100%;max-height:470px;object-fit:contain;border-radius:10px;box-shadow:0 8px 24px rgba(21,49,61,.13)}
+.safetyCardBody{padding:28px 25px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.safetyCardBody>span{color:var(--teal);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+.safetyCardBody h3{font-size:1.35rem;line-height:1.15;margin:10px 0}
+.safetyCardBody p{color:var(--muted);font-size:.92rem;line-height:1.55;margin:0 0 22px}
+.safetyCardBody a{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--teal);color:#fff;font-size:.88rem;font-weight:900}
+.safetyCardBody a:hover{background:var(--teal-dark)}
+@media(max-width:1000px){.safetyCard{grid-template-columns:1fr}.safetyPreview{min-height:0}.safetyPreview img{max-height:520px}.safetyCardBody{justify-content:flex-start}}
+@media(max-width:700px){.safetyGrid{grid-template-columns:1fr}.safetyCardBody a{width:100%;justify-content:center}}
