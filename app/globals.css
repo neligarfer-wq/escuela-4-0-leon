@@ -344,3 +344,15 @@
 .academyAccess small{color:var(--muted);font-size:.86rem}
 .academyAccessCta{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;border-radius:999px;background:var(--teal);color:#fff;font-size:.84rem;font-weight:900;white-space:nowrap}
 @media(max-width:620px){.academyAccess{align-items:flex-start;flex-direction:column}.academyAccessCta{width:100%;justify-content:center}}
+
+
+/* Protocolo de mantenimiento y soporte de la Creality K1C */
+.crealitySupport{display:grid;gap:12px;margin:6px 0 18px}
+.crealitySupport section{padding:15px;border:1px solid var(--line);border-radius:13px;background:#f7fbfa}
+.crealitySupport section>b{display:block;color:var(--teal-dark);margin-bottom:8px}
+.crealitySupport p{margin:6px 0 10px!important}
+.crealitySupport ul{margin:8px 0 0;padding-left:20px}
+.crealitySupport li{margin:5px 0;color:var(--muted);font-size:.88rem;line-height:1.45}
+.crealitySupport .warrantyCase{border-color:#efc7b5;background:#fff8f3}
+.crealitySupport .warrantyCase>b{color:#a13c12}
+.crealitySupport .warrantyCase a{color:var(--teal-dark);font-weight:900;text-decoration:underline;text-underline-offset:2px}
