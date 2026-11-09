@@ -82,6 +82,15 @@ export default function Home(){
       </div>
       <article className="trainingUpdateCard">
         <div>
+          <span className="trainingStatus">Inscripción abierta</span>
+          <h3>DESCONECTate: Pensamiento computacional sin pantallas</h3>
+          <p className="trainingLocation">CFIE de Ponferrada · Infantil, Primaria y Secundaria</p>
+          <p className="trainingDates"><strong>Lunes 23 de noviembre:</strong> de 17:30 a 19:30 h</p>
+        </div>
+        <p className="trainingCall"><strong>Inscripción:</strong> hasta el 19 de noviembre.</p>
+      </article>
+      <article className="trainingUpdateCard">
+        <div>
           <span className="trainingStatus">Próxima formación</span>
           <h3>Formación específica presencial del CFIE de León</h3>
           <p className="trainingLocation">En sus instalaciones</p>
