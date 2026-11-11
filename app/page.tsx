@@ -96,7 +96,7 @@ export default function Home(){
           <p className="trainingLocation">En sus instalaciones</p>
           <p className="trainingDates"><strong>Semana II:</strong> del 23 al 26 de noviembre</p>
         </div>
-        <p className="trainingCall"><strong>Convocatoria:</strong> próximamente.</p>
+        <p className="trainingCall"><strong>Inscripción:</strong> del 29 de octubre al 17 de noviembre.</p>
       </article>
       <a className="academyAccess" href="https://academy.smarttech.com/#/signup-form" target="_blank" rel="noreferrer"><span><strong>SMART Academy</strong><small>Registro y acceso a la plataforma de formación</small></span><span className="academyAccessCta">Acceder <ExternalLink size={17}/></span></a>
     </section>
