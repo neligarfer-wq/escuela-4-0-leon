@@ -77,27 +77,28 @@ export default function Home(){
     <section id="formacion" className="trainingUpdates">
       <div className="trainingUpdatesIntro">
         <span className="kicker">Formación Escuela 4.0</span>
-        <h2>Formaciones disponibles y próximas</h2>
-        <p>Consulta aquí las actividades formativas relacionadas con Escuela 4.0. Este apartado se irá actualizando a medida que se publiquen nuevas convocatorias.</p>
+        <h2>Formación y recursos para el profesorado</h2>
+        <p>Consulta aquí las actividades formativas relacionadas con Escuela 4.0. Las actividades con inscripción cerrada se indican expresamente. Consulta las convocatorias de los CFIE para conocer nuevas plazas y fechas.</p>
       </div>
       <article className="trainingUpdateCard">
         <div>
-          <span className="trainingStatus">Inscripción abierta</span>
+          <span className="trainingStatus">Actividad programada · Inscripción cerrada</span>
           <h3>DESCONECTate: Pensamiento computacional sin pantallas</h3>
           <p className="trainingLocation">CFIE de Ponferrada · Infantil, Primaria y Secundaria</p>
           <p className="trainingDates"><strong>Lunes 23 de noviembre:</strong> de 17:30 a 19:30 h</p>
         </div>
-        <p className="trainingCall"><strong>Inscripción:</strong> hasta el 19 de noviembre.</p>
+        <p className="trainingCall">Plazo de inscripción finalizado.</p>
       </article>
       <article className="trainingUpdateCard">
         <div>
-          <span className="trainingStatus">Próxima formación</span>
+          <span className="trainingStatus">Actividad programada · Inscripción cerrada</span>
           <h3>Formación específica presencial del CFIE de León</h3>
           <p className="trainingLocation">En sus instalaciones</p>
           <p className="trainingDates"><strong>Semana II:</strong> del 23 al 26 de noviembre</p>
         </div>
-        <p className="trainingCall"><strong>Inscripción:</strong> del 29 de octubre al 17 de noviembre.</p>
+        <p className="trainingCall">Plazo de inscripción finalizado.</p>
       </article>
+      <a className="academyAccess" href="https://cfieponferrada.centros.educa.jcyl.es/" target="_blank" rel="noreferrer"><span><strong>CFIE de Ponferrada</strong><small>Consulta próximas convocatorias y actividades formativas</small></span><span className="academyAccessCta">Consultar <ExternalLink size={17}/></span></a>
       <a className="academyAccess" href="https://academy.smarttech.com/#/signup-form" target="_blank" rel="noreferrer"><span><strong>SMART Academy</strong><small>Registro y acceso a la plataforma de formación</small></span><span className="academyAccessCta">Acceder <ExternalLink size={17}/></span></a>
     </section>
     <section id="pensamiento" className="section thinking"><div className="sectionHeading"><span className="kicker">Antes de programar</span><h2>Pensamiento computacional, en pocas palabras</h2><p>Es una forma de formular y resolver problemas para que la solución pueda ser comprendida y ejecutada por una persona o una máquina. Se apoya en ideas de la informática, pero es transferible a cualquier materia.</p></div><div className="notSame"><div><span>La forma de pensar</span><h3>Pensamiento computacional</h3><p>Analizar, representar y resolver un problema de manera lógica y reutilizable. También se trabaja sin pantallas: con historias, recorridos, tarjetas, construcciones o juegos.</p></div><div><span>Una manera de expresarlo</span><h3>Programación</h3><p>Escribir una solución con las reglas de un lenguaje para que la ejecute un dispositivo. Ayuda a desarrollar el pensamiento computacional, pero no son sinónimos.</p></div><div><span>Un contexto para probarlo</span><h3>Robótica</h3><p>Combinar programa, sensores, motores y mecanismos para actuar en el mundo físico. Hace visibles las decisiones y facilita comprobar y depurar.</p></div></div><div className="skillsGrid">{thinkingSkills.map((skill,i)=><article key={skill[0]}><span>{String(i+1).padStart(2,"0")}</span><div><h3>{skill[0]}</h3><p>{skill[1]}</p></div></article>)}</div><div className="progression"><div className="progressionIntro"><span className="kicker">Progresión orientativa</span><h3>De seguir una secuencia a crear una solución</h3><p>La complejidad crece poco a poco. En cada etapa importa que el alumnado explique, pruebe y mejore, no solo que el dispositivo funcione.</p></div><ol>{progression.map(item=><li key={item[0]}><b>{item[0]}</b><p>{item[1]}</p></li>)}</ol></div></section>
