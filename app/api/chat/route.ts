@@ -47,22 +47,32 @@ export async function POST(request: NextRequest) {
       .filter((m: { name?: string; supportedGenerationMethods?: string[] }) =>
         m.name?.startsWith("models/gemini-") && m.supportedGenerationMethods?.includes("generateContent"))
       .map((m: { name: string }) => m.name.replace("models/", ""));
-    const preferred = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash"];
+    const preferred = ["gemini-2.5-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"];
     const candidates = [...new Set([...preferred.filter(m => available.includes(m)),
       ...available.filter(m => m.includes("flash")), ...available])];
     if (!candidates.length) return reply("Esta clave API no tiene modelos Gemini disponibles para generar respuestas.", 502);
-    let upstream = await callModel(candidates[0]);
-    for (const model of candidates.slice(1, 5)) {
-      if (upstream.status !== 404) break;
+    // Try other available models only when the model itself is unavailable.
+    // Quota, permission and invalid-request errors need actionable diagnostics.
+    let upstream: Response | undefined;
+    for (const model of candidates.slice(0, 5)) {
       upstream = await callModel(model);
+      if (upstream.status !== 404) break;
     }
-    if (upstream.status === 429) return reply("Se ha alcanzado el límite gratuito de Gemini. Inténtalo más tarde.", 429);
-    if (upstream.status === 400) return reply("Gemini ha rechazado la solicitud (400). Comprueba el modelo y la configuración del proyecto.", 502);
-    if (upstream.status === 401 || upstream.status === 403) return reply("Gemini ha rechazado la autenticación (401/403). Revisa la clave API y sus restricciones.", 502);
-    if (upstream.status === 404) return reply("El modelo Gemini configurado no está disponible para este proyecto.", 502);
+    if (!upstream) return reply("No hay modelos Gemini disponibles.", 502);
     if (!upstream.ok) {
-      console.error("Gemini API response status:", upstream.status);
-      return reply(`Gemini ha devuelto un error HTTP ${upstream.status}. Comprueba los registros de Vercel.`, 502);
+      const status = upstream.status;
+      let reason = "";
+      try {
+        const details = await upstream.json();
+        reason = String(details?.error?.status || "");
+      } catch { /* Upstream may not return JSON. */ }
+      console.error("Gemini API error:", { status, reason });
+      if (status === 429 || reason === "RESOURCE_EXHAUSTED") return reply("Se ha alcanzado el límite de uso de Gemini para esta clave. Comprueba las cuotas en Google AI Studio o inténtalo más tarde.", 429);
+      if (status === 401 || status === 403) return reply("Gemini ha rechazado la clave API o los permisos del proyecto. Revisa la clave y sus restricciones en Google AI Studio.", 502);
+      if (status === 404) return reply("Ninguno de los modelos Gemini disponibles ha aceptado la solicitud (404).", 502);
+      if (status === 400) return reply("Gemini ha rechazado la solicitud (400). Revisa los parámetros y la configuración de la API.", 502);
+      if (status >= 500) return reply("El servicio de Gemini está experimentando un fallo temporal. Inténtalo de nuevo más tarde.", 503);
+      return reply(`Gemini ha devuelto HTTP ${status}. Consulta los registros de Vercel.`, 502);
     }
     const data = await upstream.json();
     const answer = data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text || "").join("").trim();
