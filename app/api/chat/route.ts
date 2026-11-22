@@ -28,14 +28,19 @@ export async function POST(request: NextRequest) {
       cache: "no-store"
     });
     if (upstream.status === 429) return reply("Se ha alcanzado el límite gratuito de Gemini. Inténtalo más tarde.", 429);
-    if (upstream.status === 400 || upstream.status === 403) return reply("Gemini ha rechazado la solicitud. Comprueba la clave API y los permisos del proyecto.", 502);
+    if (upstream.status === 400) return reply("Gemini ha rechazado la solicitud (400). Comprueba el modelo y la configuración del proyecto.", 502);
+    if (upstream.status === 401 || upstream.status === 403) return reply("Gemini ha rechazado la autenticación (401/403). Revisa la clave API y sus restricciones.", 502);
     if (upstream.status === 404) return reply("El modelo Gemini configurado no está disponible para este proyecto.", 502);
-    if (!upstream.ok) return reply("Gemini no está disponible en este momento.", 502);
+    if (!upstream.ok) {
+      console.error("Gemini API response status:", upstream.status);
+      return reply(`Gemini ha devuelto un error HTTP ${upstream.status}. Comprueba los registros de Vercel.`, 502);
+    }
     const data = await upstream.json();
     const answer = data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text || "").join("").trim();
     if (!answer) return reply("Gemini no ha devuelto una respuesta. Prueba a reformular la pregunta.", 502);
     return NextResponse.json({ answer }, { headers: { "Cache-Control": "no-store" } });
-  } catch {
-    return reply("No se ha podido conectar con Gemini. Inténtalo de nuevo.", 502);
+  } catch (error) {
+    console.error("Gemini connection error:", error instanceof Error ? error.name : "unknown");
+    return reply(error instanceof Error && error.name === "TimeoutError" ? "Gemini ha tardado demasiado en responder (25 segundos)." : "No se ha podido conectar con Gemini. Revisa los registros de Vercel.", 502);
   }
 }
