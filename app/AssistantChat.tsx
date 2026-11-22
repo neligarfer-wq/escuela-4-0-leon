@@ -15,10 +15,10 @@ import kit9 from "./kit-index-81.json";
 import styles from "./AssistantChat.module.css";
 
 type Message = { role: "assistant" | "user"; text: string; links?: {title:string;url:string}[] };
-const welcome = "¡Hola! Busco recursos de Escuela 4.0 León y te ayudo a localizar fichas oficiales, recursos destacados y materiales de las páginas enlazadas.";
+const welcome = "¡Hola! Pregúntame por cualquier actividad, material o contenido educativo. Buscaré automáticamente en los recursos de Escuela 4.0 León y en los documentos incorporados, sin que tengas que indicar dónde buscar.";
 const kitPages = [...kit1,...kit2,...kit3,...kit4,...kit5,...kit6,...kit7,...kit8,...kit9];
 const kitUrl = "https://neligarfer-wq.github.io/escuela-4-0-leon/kit-bienvenida-codigo-escuela-4-0-intef.pdf";
-const suggestions = ["Fichas para 4.º de Primaria", "Recursos destacados de micro:bit", "Ayuda con Creality K1C"];
+const suggestions = ["Algoritmos en Matemáticas de Primaria", "Actividades desconectadas", "Sensores y robótica educativa"];
 const normalize = (s:string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/micro\s*:\s*bit/g,"microbit").replace(/[^a-z0-9]+/g," ").trim();
 const stop = new Set(["como","puedo","quiero","para","con","una","uno","unos","unas","los","las","del","que","por","donde","cual","hacer","empezar","ayuda","actividad","actividades","recurso","recursos","material","materiales","escuela","aula","leon","sobre","tengo","necesito","usar","uso","de","en","el","la","y","a","un","mi","es","se","me","al","primero"]);
 function searchKit(question:string) {
@@ -83,7 +83,7 @@ export default function AssistantChat() {
     const found=search(clean);
     const kitFound=searchKit(clean);
     const kitLinks=kitFound.map(p=>({title:"Kit INTEF · Página "+p.page,url:kitUrl+"#page="+p.page}));
-    const kitSummary=kitFound.length?"\\n\\nCoincidencias dentro del Kit de bienvenida del INTEF:\\n"+kitFound.map(p=>"• Página "+p.page+": …"+p.excerpt+"…").join("\\n\\n"):"";
+    const kitSummary=kitFound.length?"\n\nTambién he encontrado información en documentos de la web:\n"+kitFound.map(p=>"• Kit de bienvenida INTEF, página "+p.page+": …"+p.excerpt+"…").join("\n\n"):"";
     let answer:Message;
     if(!found.length)answer={role:"assistant",text:(kitFound.length?"He encontrado información en el documento del INTEF.":"No encuentro una coincidencia clara en el índice de esta web.")+kitSummary+"\\n\\nPuedes consultar también las fichas oficiales y recursos destacados.",links:[...kitLinks,...linkedSearch(clean,found)]};
     else {
@@ -96,7 +96,7 @@ export default function AssistantChat() {
     {open&&<section className={styles.panel} role="dialog" aria-label="Buscador Escuela 4.0" aria-modal="false">
       <header className={styles.header}>
         <span className={styles.avatar}><Bot size={22}/></span>
-        <span className={styles.heading}><strong>Asistente Escuela 4.0</strong><small>Incluye búsqueda dentro del Kit INTEF (85 páginas)</small></span>
+        <span className={styles.heading}><strong>Asistente Escuela 4.0</strong><small>Busca en recursos y documentos automáticamente</small></span>
         <button className={styles.iconButton} type="button" aria-label="Reiniciar conversación" title="Reiniciar conversación" onClick={()=>setMessages([{role:"assistant",text:welcome}])}><RotateCcw size={18}/></button>
         <button className={styles.iconButton} type="button" aria-label="Cerrar asistente" onClick={()=>setOpen(false)}><X size={20}/></button>
       </header>
@@ -110,7 +110,7 @@ export default function AssistantChat() {
         <input ref={input} id="escuela40-question" value={draft} onChange={e=>setDraft(e.target.value)} maxLength={1000} placeholder="Busca un recurso o actividad..." />
         <button type="submit" disabled={!draft.trim()} aria-label="Buscar recursos"><Send size={19}/></button>
       </form>
-      <p className={styles.notice}>La búsqueda incluye el texto del Kit de bienvenida INTEF y enlaces a páginas concretas, sin servidores ni IA. Para consultar el contenido de fichas y páginas externas se abre una búsqueda en Google; los resultados dependen de lo que tenga indexado.</p>
+      <p className={styles.notice}>Busca automáticamente en los recursos y en el texto del Kit INTEF, con enlaces a las páginas encontradas, sin servidores ni IA. Para consultar el contenido de fichas y páginas externas se abre una búsqueda en Google; los resultados dependen de lo que tenga indexado.</p>
     </section>}
     <button className={styles.launcher} type="button" aria-label={open?"Cerrar asistente Escuela 4.0":"Abrir asistente Escuela 4.0"} aria-expanded={open} onClick={()=>setOpen(!open)}>{open?<X size={24}/>:<><MessageCircle size={23}/><span>Buscar recursos</span></>}</button>
   </div>;
