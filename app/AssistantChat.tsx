@@ -87,7 +87,7 @@ export default function AssistantChat() {
     let answer:Message;
     if(!found.length)answer={role:"assistant",text:(kitFound.length?"He encontrado información en el documento del INTEF.":"No encuentro una coincidencia clara en el índice de esta web.")+kitSummary+"\\n\\nPuedes consultar también las fichas oficiales y recursos destacados.",links:[...kitLinks,...linkedSearch(clean,found)]};
     else {
-      answer={role:"assistant",text:"He encontrado estos recursos en Escuela 4.0 León:\n\n"+found.map((r,i)=>(i+1)+". "+r.name+" ("+r.stage+"): "+(r.start||r.learns)).join("\n\n")+"\n\nAbre las guías o busca también en las fichas oficiales y los recursos destacados de Educacyl.",links:[...found.flatMap(r=>r.links.slice(0,3).map(l=>({title:r.name+" · "+l.title,url:l.url}))),...linkedSearch(clean,found)]};
+      answer={role:"assistant",text:"He encontrado estos recursos en Escuela 4.0 León:\n\n"+found.map((r,i)=>(i+1)+". "+r.name+" ("+r.stage+"): "+(r.start||r.learns)).join("\n\n")+kitSummary+"\n\nAbre las guías o busca también en las fichas oficiales y los recursos destacados de Educacyl.",links:[...kitLinks,...found.flatMap(r=>r.links.slice(0,3).map(l=>({title:r.name+" · "+l.title,url:l.url}))),...linkedSearch(clean,found)]};
     }
     setMessages(old=>[...old,{role:"user",text:clean},answer]);
     setDraft("");
