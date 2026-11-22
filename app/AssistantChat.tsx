@@ -3,13 +3,37 @@
 import { useEffect, useRef, useState } from "react";
 import { Bot, Send, X, MessageCircle, RotateCcw } from "lucide-react";
 import resources from "./search-index.json";
+import kit1 from "./kit-index-01.json";
+import kit2 from "./kit-index-11.json";
+import kit3 from "./kit-index-21.json";
+import kit4 from "./kit-index-31.json";
+import kit5 from "./kit-index-41.json";
+import kit6 from "./kit-index-51.json";
+import kit7 from "./kit-index-61.json";
+import kit8 from "./kit-index-71.json";
+import kit9 from "./kit-index-81.json";
 import styles from "./AssistantChat.module.css";
 
 type Message = { role: "assistant" | "user"; text: string; links?: {title:string;url:string}[] };
 const welcome = "¡Hola! Busco recursos de Escuela 4.0 León y te ayudo a localizar fichas oficiales, recursos destacados y materiales de las páginas enlazadas.";
+const kitPages = [...kit1,...kit2,...kit3,...kit4,...kit5,...kit6,...kit7,...kit8,...kit9];
+const kitUrl = "https://neligarfer-wq.github.io/escuela-4-0-leon/kit-bienvenida-codigo-escuela-4-0-intef.pdf";
 const suggestions = ["Fichas para 4.º de Primaria", "Recursos destacados de micro:bit", "Ayuda con Creality K1C"];
 const normalize = (s:string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/micro\s*:\s*bit/g,"microbit").replace(/[^a-z0-9]+/g," ").trim();
 const stop = new Set(["como","puedo","quiero","para","con","una","uno","unos","unas","los","las","del","que","por","donde","cual","hacer","empezar","ayuda","actividad","actividades","recurso","recursos","material","materiales","escuela","aula","leon","sobre","tengo","necesito","usar","uso","de","en","el","la","y","a","un","mi","es","se","me","al","primero"]);
+function searchKit(question:string) {
+  const q=normalize(question);
+  const words=q.split(" ").filter(w=>w.length>3&&!stop.has(w));
+  if(!words.length)return [];
+  return kitPages.map(p=>{
+    const text=normalize(p.text);
+    const matches=words.filter(w=>text.includes(w));
+    const score=matches.length*5 + (matches.length===words.length?10:0) + (text.includes(q)?12:0);
+    const first=matches.length?text.indexOf(matches[0]):-1;
+    const excerpt=first>=0?p.text.slice(Math.max(0,first-100),Math.min(p.text.length,first+250)).trim():"";
+    return {page:p.page,score,excerpt};
+  }).filter(p=>p.score>=5).sort((a,b)=>b.score-a.score).slice(0,3);
+}
 function linkedSearch(question:string, found:typeof resources) {
   const direct = [
     {title:"Buscar en fichas oficiales Escuela 4.0 (Educacyl)",url:"https://www.google.com/search?q="+encodeURIComponent("site:educa.jcyl.es/profesorado/es/fichasescuela40 "+question)},
@@ -57,8 +81,11 @@ export default function AssistantChat() {
     const clean=text.trim().slice(0,1000);
     if(!clean)return;
     const found=search(clean);
+    const kitFound=searchKit(clean);
+    const kitLinks=kitFound.map(p=>({title:"Kit INTEF · Página "+p.page,url:kitUrl+"#page="+p.page}));
+    const kitSummary=kitFound.length?"\\n\\nCoincidencias dentro del Kit de bienvenida del INTEF:\\n"+kitFound.map(p=>"• Página "+p.page+": …"+p.excerpt+"…").join("\\n\\n"):"";
     let answer:Message;
-    if(!found.length)answer={role:"assistant",text:"No encuentro una coincidencia clara en el índice de esta web. También puedes buscar tu consulta dentro de las páginas externas enlazadas mediante las búsquedas siguientes.",links:linkedSearch(clean,found)};
+    if(!found.length)answer={role:"assistant",text:(kitFound.length?"He encontrado información en el documento del INTEF.":"No encuentro una coincidencia clara en el índice de esta web.")+kitSummary+"\\n\\nPuedes consultar también las fichas oficiales y recursos destacados.",links:[...kitLinks,...linkedSearch(clean,found)]};
     else {
       answer={role:"assistant",text:"He encontrado estos recursos en Escuela 4.0 León:\n\n"+found.map((r,i)=>(i+1)+". "+r.name+" ("+r.stage+"): "+(r.start||r.learns)).join("\n\n")+"\n\nAbre las guías o busca también en las fichas oficiales y los recursos destacados de Educacyl.",links:[...found.flatMap(r=>r.links.slice(0,3).map(l=>({title:r.name+" · "+l.title,url:l.url}))),...linkedSearch(clean,found)]};
     }
@@ -69,7 +96,7 @@ export default function AssistantChat() {
     {open&&<section className={styles.panel} role="dialog" aria-label="Buscador Escuela 4.0" aria-modal="false">
       <header className={styles.header}>
         <span className={styles.avatar}><Bot size={22}/></span>
-        <span className={styles.heading}><strong>Asistente Escuela 4.0</strong><small>Fichas, recursos destacados y materiales</small></span>
+        <span className={styles.heading}><strong>Asistente Escuela 4.0</strong><small>Incluye búsqueda dentro del Kit INTEF (85 páginas)</small></span>
         <button className={styles.iconButton} type="button" aria-label="Reiniciar conversación" title="Reiniciar conversación" onClick={()=>setMessages([{role:"assistant",text:welcome}])}><RotateCcw size={18}/></button>
         <button className={styles.iconButton} type="button" aria-label="Cerrar asistente" onClick={()=>setOpen(false)}><X size={20}/></button>
       </header>
@@ -83,7 +110,7 @@ export default function AssistantChat() {
         <input ref={input} id="escuela40-question" value={draft} onChange={e=>setDraft(e.target.value)} maxLength={1000} placeholder="Busca un recurso o actividad..." />
         <button type="submit" disabled={!draft.trim()} aria-label="Buscar recursos"><Send size={19}/></button>
       </form>
-      <p className={styles.notice}>La búsqueda en esta web funciona sin servidores ni IA. Para consultar el contenido de fichas y páginas externas se abre una búsqueda en Google; los resultados dependen de lo que tenga indexado.</p>
+      <p className={styles.notice}>La búsqueda incluye el texto del Kit de bienvenida INTEF y enlaces a páginas concretas, sin servidores ni IA. Para consultar el contenido de fichas y páginas externas se abre una búsqueda en Google; los resultados dependen de lo que tenga indexado.</p>
     </section>}
     <button className={styles.launcher} type="button" aria-label={open?"Cerrar asistente Escuela 4.0":"Abrir asistente Escuela 4.0"} aria-expanded={open} onClick={()=>setOpen(!open)}>{open?<X size={24}/>:<><MessageCircle size={23}/><span>Buscar recursos</span></>}</button>
   </div>;
