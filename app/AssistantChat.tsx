@@ -18,7 +18,8 @@ type Message = { role: "assistant" | "user"; text: string; links?: {title:string
 const welcome = "¡Hola! Pregúntame por cualquier actividad, material o contenido educativo. Buscaré automáticamente en los recursos de Escuela 4.0 León y en los documentos incorporados, sin que tengas que indicar dónde buscar.";
 const kitPages = [...kit1,...kit2,...kit3,...kit4,...kit5,...kit6,...kit7,...kit8,...kit9];
 const kitUrl = "https://neligarfer-wq.github.io/escuela-4-0-leon/kit-bienvenida-codigo-escuela-4-0-intef.pdf";
-const suggestions = ["Algoritmos en Matemáticas de Primaria", "Actividades desconectadas", "Sensores y robótica educativa"];
+const extraTopics = [{name:"Scratch · formación y actividades",keywords:["scratch"],links:[{title:"Curso INTEF: pensamiento computacional en el aula con Scratch",url:"https://formacion.intef.es/course/view.php?id=47"},{title:"Abrir Scratch",url:"https://scratch.mit.edu/"}]}];
+const suggestions = ["Scratch", "Algoritmos en Matemáticas de Primaria", "Actividades desconectadas"];
 const normalize = (s:string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/micro\s*:\s*bit/g,"microbit").replace(/[^a-z0-9]+/g," ").trim();
 const stop = new Set(["como","puedo","quiero","para","con","una","uno","unos","unas","los","las","del","que","por","donde","cual","hacer","empezar","ayuda","actividad","actividades","recurso","recursos","material","materiales","escuela","aula","leon","sobre","tengo","necesito","usar","uso","de","en","el","la","y","a","un","mi","es","se","me","al","primero"]);
 function searchKit(question:string) {
@@ -83,11 +84,12 @@ export default function AssistantChat() {
     const found=search(clean);
     const kitFound=searchKit(clean);
     const kitLinks=kitFound.map(p=>({title:"Kit INTEF · Página "+p.page,url:kitUrl+"#page="+p.page}));
+    const topicLinks=extraTopics.filter(t=>t.keywords.some(w=>normalize(clean).includes(w))).flatMap(t=>t.links);
     const kitSummary=kitFound.length?"\n\nTambién he encontrado información en documentos de la web:\n"+kitFound.map(p=>"• Kit de bienvenida INTEF, página "+p.page+": …"+p.excerpt+"…").join("\n\n"):"";
     let answer:Message;
-    if(!found.length)answer={role:"assistant",text:(kitFound.length?"He encontrado información en el documento del INTEF.":"No encuentro una coincidencia clara en el índice de esta web.")+kitSummary+"\\n\\nPuedes consultar también las fichas oficiales y recursos destacados.",links:[...kitLinks,...linkedSearch(clean,found)]};
+    if(!found.length)answer={role:"assistant",text:(kitFound.length?"He encontrado información en el documento del INTEF.":"No encuentro una coincidencia clara en el índice de esta web.")+kitSummary+"\\n\\nPuedes consultar también las fichas oficiales y recursos destacados.",links:[...topicLinks,...kitLinks,...linkedSearch(clean,found)]};
     else {
-      answer={role:"assistant",text:"He encontrado estos recursos en Escuela 4.0 León:\n\n"+found.map((r,i)=>(i+1)+". "+r.name+" ("+r.stage+"): "+(r.start||r.learns)).join("\n\n")+kitSummary+"\n\nAbre las guías o busca también en las fichas oficiales y los recursos destacados de Educacyl.",links:[...kitLinks,...found.flatMap(r=>r.links.slice(0,3).map(l=>({title:r.name+" · "+l.title,url:l.url}))),...linkedSearch(clean,found)]};
+      answer={role:"assistant",text:"He encontrado estos recursos en Escuela 4.0 León:\n\n"+found.map((r,i)=>(i+1)+". "+r.name+" ("+r.stage+"): "+(r.start||r.learns)).join("\n\n")+kitSummary+"\n\nAbre las guías o busca también en las fichas oficiales y los recursos destacados de Educacyl.",links:[...topicLinks,...kitLinks,...found.flatMap(r=>r.links.slice(0,3).map(l=>({title:r.name+" · "+l.title,url:l.url}))),...linkedSearch(clean,found)]};
     }
     setMessages(old=>[...old,{role:"user",text:clean},answer]);
     setDraft("");
