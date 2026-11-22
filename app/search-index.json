@@ -1,0 +1,347 @@
+[
+  {
+    "name": "Fichas oficiales Escuela 4.0",
+    "stage": "Infantil · Primaria · Secundaria",
+    "lot": "Portal Educacyl",
+    "start": "Elige la etapa, el material o el tipo de actividad y abre una propuesta lista para orientar el trabajo en el aula.",
+    "learns": "Pensamiento computacional, programación, robótica educativa y aplicación didáctica.",
+    "subjects": "Todas las áreas y materias · Proyectos interdisciplinares",
+    "warning": "",
+    "links": [
+      {
+        "title": "Abrir fichas Escuela 4.0",
+        "url": "https://www.educa.jcyl.es/profesorado/es/fichasescuela40"
+      }
+    ]
+  },
+  {
+    "name": "Kit de bienvenida Código Escuela 4.0",
+    "stage": "Infantil · Primaria · Secundaria",
+    "lot": "INTEF",
+    "start": "Consulta una introducción completa al programa, su marco curricular, las líneas de formación y una selección de recursos y situaciones de aprendizaje.",
+    "learns": "Pensamiento computacional, programación, robótica, impresión 3D, realidad extendida, placas programables e inteligencia artificial.",
+    "subjects": "Profesorado de todas las etapas · Aplicación curricular y recursos didácticos",
+    "warning": "",
+    "links": [
+      {
+        "title": "Descargar guía del INTEF (PDF)",
+        "url": "https://neligarfer-wq.github.io/escuela-4-0-leon/kit-bienvenida-codigo-escuela-4-0-intef.pdf"
+      }
+    ]
+  },
+  {
+    "name": "Capacitaciones Escuela 4.0",
+    "stage": "Infantil · Primaria · Secundaria",
+    "lot": "Portal Educacyl",
+    "start": "Consulta las capacitaciones disponibles para conocer los materiales y preparar su aplicación educativa.",
+    "learns": "Uso didáctico de los recursos, programación, robótica y competencia digital docente.",
+    "subjects": "Profesorado de todas las etapas y especialidades",
+    "warning": "",
+    "links": [
+      {
+        "title": "Capacitación lotes 1, 2 y 4",
+        "url": "https://academy.smarttech.com/#/dashboard"
+      },
+      {
+        "title": "Capacitación lote 3",
+        "url": "https://e4cyl.complubot.com/"
+      }
+    ]
+  },
+  {
+    "name": "mTiny Discover Kit",
+    "stage": "Infantil · 1.º–2.º Primaria",
+    "lot": "Lote 1",
+    "start": "Programa un recorrido con tarjetas para que mTiny visite tres lugares de un cuento.",
+    "learns": "Secuencias, orientación, narración y cooperación.",
+    "subjects": "Crecimiento en armonía · Descubrimiento del entorno · Lengua · Matemáticas",
+    "warning": "",
+    "links": [
+      {
+        "title": "Guía práctica mTiny",
+        "url": "https://support.makeblock.com/hc/en-us/articles/12823234387479-A-Beginner-s-Guide-to-mTiny"
+      },
+      {
+        "title": "Actividades y recursos mTiny",
+        "url": "https://support.makeblock.com/hc/en-us/articles/1500008895101-About-mTiny"
+      },
+      {
+        "title": "Actualizar el firmware de mTiny",
+        "url": "https://support.makeblock.com/hc/en-us/articles/4402732695447-How-to-Update-Firmware-for-mTiny"
+      }
+    ]
+  },
+  {
+    "name": "Floor Code Game",
+    "stage": "Infantil",
+    "lot": "Lote 3",
+    "start": "El alumnado se convierte en robot y sigue órdenes sobre un tablero grande.",
+    "learns": "Algoritmos corporales, lateralidad, secuencias y motricidad.",
+    "subjects": "Todas las áreas de Infantil · Psicomotricidad",
+    "warning": "",
+    "links": [
+      {
+        "title": "Juego de suelo · Guías y actividades",
+        "url": "https://e4cyl.complubot.com/juego-suelo.html"
+      },
+      {
+        "title": "Webinario del juego de suelo",
+        "url": "https://e4cyl.complubot.com/webinar/webinar-juego-suelo.php"
+      }
+    ]
+  },
+  {
+    "name": "True True",
+    "stage": "1.º–4.º Primaria",
+    "lot": "Lote 3",
+    "start": "Construye con tarjetas un recorrido por una cuadrícula de números, palabras o lugares.",
+    "learns": "Algoritmos, giros, depuración, sensores y eventos.",
+    "subjects": "Matemáticas · Lengua · Conocimiento del Medio · Artística",
+    "warning": "No utilizar cargadores de carga rápida.",
+    "links": [
+      {
+        "title": "Cómo empezar",
+        "url": "https://www.truetrue.es/empezar.html"
+      },
+      {
+        "title": "Recursos imprimibles",
+        "url": "https://www.truetrue.es/recursos.html"
+      },
+      {
+        "title": "Recursos E4CYL",
+        "url": "https://e4cyl.complubot.com/truetrue.html"
+      },
+      {
+        "title": "Webinario de True True",
+        "url": "https://e4cyl.complubot.com/webinar/webinar-truetrue.php"
+      }
+    ]
+  },
+  {
+    "name": "Codey Rocky",
+    "stage": "3.º–6.º Primaria",
+    "lot": "Lote 1",
+    "start": "Conecta el robot a mBlock y programa luces, sonidos y un desplazamiento con condición.",
+    "learns": "Bloques, eventos, bucles, condicionales y sensores.",
+    "subjects": "Matemáticas · Conocimiento del Medio · Lengua · Artística",
+    "warning": "",
+    "links": [
+      {
+        "title": "mBlock online",
+        "url": "https://ide.mblock.cc/"
+      },
+      {
+        "title": "Recursos Makeblock",
+        "url": "https://education.makeblock.com/resource/codey-rocky/"
+      }
+    ]
+  },
+  {
+    "name": "micro:bit V2 + sensores",
+    "stage": "3.º–6.º Primaria · ESO",
+    "lot": "Lote 3",
+    "start": "Muestra un icono al pulsar un botón y después crea un contador o registra temperatura y luz.",
+    "learns": "Variables, datos, sensores, radio, bloques y Python.",
+    "subjects": "Matemáticas · Ciencias · Tecnología y Digitalización · Educación Física",
+    "warning": "",
+    "links": [
+      {
+        "title": "MakeCode",
+        "url": "https://makecode.microbit.org/"
+      },
+      {
+        "title": "Micro:bit Classroom",
+        "url": "https://classroom.microbit.org/"
+      },
+      {
+        "title": "Lecciones oficiales",
+        "url": "https://microbit.org/teach/lessons/"
+      },
+      {
+        "title": "Webinario de la placa micro:bit",
+        "url": "https://e4cyl.complubot.com/webinar/webinar-microbit.php"
+      },
+      {
+        "title": "Webinario del kit micro:bit",
+        "url": "https://e4cyl.complubot.com/webinar/webinar-kit-microbit.php"
+      }
+    ]
+  },
+  {
+    "name": "SAM Labs",
+    "stage": "5.º–6.º Primaria · 1.º–3.º ESO",
+    "lot": "Lote 2",
+    "start": "Crea un sistema inalámbrico: entrada, regla y salida para resolver una necesidad del aula.",
+    "learns": "Sistemas, automatización, computación física y diseño.",
+    "subjects": "Ciencias · Tecnología · Matemáticas · Proyectos STEAM",
+    "warning": "",
+    "links": [
+      {
+        "title": "SAM Studio",
+        "url": "https://studio.samlabs.com/"
+      },
+      {
+        "title": "Acceso STEAM",
+        "url": "https://www.samlabs.es/es-stem"
+      },
+      {
+        "title": "Acceso Learn to Code",
+        "url": "https://www.samlabs.es/password-access1649935717452?page_id=54147384&page_key=rv776tb0adveipi1&login_redirect=1"
+      },
+      {
+        "title": "Web oficial SAM Labs",
+        "url": "https://samlabs.com/"
+      }
+    ]
+  },
+  {
+    "name": "Cámara de documentos SMART 650",
+    "stage": "Infantil · Primaria · Secundaria",
+    "lot": "Lote 2",
+    "start": "Conecta la cámara al panel por HDMI o al ordenador por USB y muestra en directo un cuento, una demostración, un experimento, una construcción o el trabajo del alumnado.",
+    "learns": "Observación, explicación de procedimientos, modelado, experimentación y documentación visual.",
+    "subjects": "Todas las áreas y materias · Especialmente útil en Ciencias, Matemáticas, Lengua, Artística y Tecnología",
+    "warning": "",
+    "links": [
+      {
+        "title": "Características y primeros pasos",
+        "url": "https://support.smarttech.com/docs/accessories/document-cameras/document-camera-650/es/about/features.cshtml"
+      },
+      {
+        "title": "Guía de usuario en español",
+        "url": "https://downloads.smarttech.com/media/sitecore/es/support/product/smartdocumentcamera/sdc650/guides/smart_doccam650_userguide.pdf"
+      },
+      {
+        "title": "Recursos y asistencia SMART",
+        "url": "https://support.smarttech.com/products/smart-document-cameras"
+      }
+    ]
+  },
+  {
+    "name": "LEGO SPIKE Prime",
+    "stage": "5.º–6.º Primaria · 1.º–2.º ESO",
+    "lot": "Lote 3",
+    "start": "Conoce hub, motores y sensores; construye una base móvil y haz que se detenga ante un obstáculo.",
+    "learns": "Diseño de ingeniería, mecanismos, sensores y programación.",
+    "subjects": "Matemáticas · Ciencias · Tecnología · Educación Física",
+    "warning": "",
+    "links": [
+      {
+        "title": "SPIKE online",
+        "url": "https://spike.legoeducation.com/prime/"
+      },
+      {
+        "title": "Unidades didácticas",
+        "url": "https://education.lego.com/en-us/teacher-resources/lego-education-spike-prime/lesson-planning/"
+      },
+      {
+        "title": "Recursos E4CYL",
+        "url": "https://e4cyl.complubot.com/lego-spike.html"
+      },
+      {
+        "title": "Webinario de LEGO SPIKE",
+        "url": "https://e4cyl.complubot.com/webinar/webinar-lego-spike.php"
+      }
+    ]
+  },
+  {
+    "name": "mBot2",
+    "stage": "1.º–4.º ESO",
+    "lot": "Lote 1",
+    "start": "Programa un recorrido preciso y añade respuesta a líneas, obstáculos o luz.",
+    "learns": "Robótica móvil, CyberPi, sensores, bloques y Python.",
+    "subjects": "Tecnología y Digitalización · Matemáticas · Física y Química",
+    "warning": "",
+    "links": [
+      {
+        "title": "Recursos mBot2",
+        "url": "https://education.makeblock.com/resource/mbot2/"
+      },
+      {
+        "title": "mBlock online",
+        "url": "https://ide.mblock.cc/"
+      }
+    ]
+  },
+  {
+    "name": "Arduino UNO R4 WiFi",
+    "stage": "3.º–4.º ESO",
+    "lot": "Lote 3",
+    "start": "Monta un LED con resistencia y programa su encendido; después incorpora un sensor.",
+    "learns": "Electrónica, C++, prototipado, automatización e IoT.",
+    "subjects": "Tecnología · Digitalización · Física y Química · Biología y Geología",
+    "warning": "Realizar el cableado siempre sin alimentación.",
+    "links": [
+      {
+        "title": "Arduino UNO R4 WiFi",
+        "url": "https://docs.arduino.cc/hardware/uno-r4-wifi/"
+      },
+      {
+        "title": "Arduino Education",
+        "url": "https://www.arduino.cc/education"
+      },
+      {
+        "title": "Webinario del kit Arduino",
+        "url": "https://e4cyl.complubot.com/webinar/webinar-kit-arduino.php"
+      }
+    ]
+  },
+  {
+    "name": "Impresora 3D Creality K1C",
+    "stage": "ESO",
+    "lot": "Lote 4",
+    "start": "Diseña una pieza sencilla en Tinkercad, expórtala como STL y lamínala con Creality Print.",
+    "learns": "Diseño 3D, medida, prototipado y fabricación digital.",
+    "subjects": "Tecnología · Matemáticas · EPVA · Proyectos STEAM",
+    "warning": "Uso guiado; revisar laminado, cama y filamento antes de imprimir. Al finalizar, descargar y retirar el PLA siguiendo el procedimiento de la impresora. Guardar la bobina en una bolsa o recipiente hermético, preferiblemente con desecante, para evitar la humedad.",
+    "links": [
+      {
+        "title": "Tinkercad",
+        "url": "https://www.tinkercad.com/"
+      },
+      {
+        "title": "Creality Print",
+        "url": "https://www.creality.com/pages/download-software"
+      },
+      {
+        "title": "Vídeos oficiales de la Creality K1C",
+        "url": "https://www.creality.com/es/video/k1c-carbon-3d-printer"
+      },
+      {
+        "title": "Cambiar filamento durante la impresión",
+        "url": "https://www.youtube.com/watch?v=plioBsiCTkc"
+      },
+      {
+        "title": "Resolver un atasco del extrusor",
+        "url": "https://www.youtube.com/watch?v=mjHXjQ1CWNI"
+      },
+      {
+        "title": "Limpiar el tubo",
+        "url": "https://www.youtube.com/watch?v=5M8DOHWg7cg"
+      },
+      {
+        "title": "Limpiar y sustituir la boquilla",
+        "url": "https://www.youtube.com/watch?v=4lAdjn2VAQc"
+      },
+      {
+        "title": "Manual de mantenimiento (PDF)",
+        "url": "https://neligarfer-wq.github.io/escuela-4-0-leon/manual-mantenimiento-creality-k1c.pdf"
+      }
+    ]
+  },
+  {
+    "name": "Cortadora láser xTool M1",
+    "stage": "ESO",
+    "lot": "Lote 4",
+    "start": "Diseña una etiqueta o pieza plana y realiza una primera prueba sobre material autorizado.",
+    "learns": "Diseño vectorial, medida, prototipado y fabricación.",
+    "subjects": "Tecnología · EPVA · Matemáticas · Emprendimiento",
+    "warning": "Solo con supervisión, extracción/purificación activa y materiales autorizados.",
+    "links": [
+      {
+        "title": "Centro de soporte xTool M1",
+        "url": "https://support.xtool.com/product/1"
+      }
+    ]
+  }
+]
