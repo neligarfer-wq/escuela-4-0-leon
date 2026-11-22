@@ -343,5 +343,28 @@
         "url": "https://support.xtool.com/product/1"
       }
     ]
+  },
+  {
+    "name": "Scratch · programación por bloques",
+    "stage": "Primaria · Secundaria",
+    "lot": "Recurso didáctico digital",
+    "start": "Crea historias, animaciones y videojuegos mediante bloques de programación. Ideal para trabajar secuencias, eventos, bucles, condicionales y depuración.",
+    "learns": "Pensamiento computacional, programación por bloques, Scratch, creación de videojuegos, animaciones, historias interactivas, algoritmos y creatividad.",
+    "subjects": "Matemáticas · Lengua · Ciencias · Artística · Tecnología",
+    "warning": "",
+    "links": [
+      {
+        "title": "Scratch · Crear proyectos",
+        "url": "https://scratch.mit.edu/"
+      },
+      {
+        "title": "Curso INTEF · Pensamiento computacional con Scratch",
+        "url": "https://formacion.intef.es/course/view.php?id=47"
+      },
+      {
+        "title": "Kit INTEF · Formación con Scratch (página 24)",
+        "url": "https://neligarfer-wq.github.io/escuela-4-0-leon/kit-bienvenida-codigo-escuela-4-0-intef.pdf#page=24"
+      }
+    ]
   }
 ]
