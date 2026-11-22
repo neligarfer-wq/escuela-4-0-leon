@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     const available: string[] = (Array.isArray(catalog.models) ? catalog.models : [])
       .filter((m: { name?: string; supportedGenerationMethods?: string[] }) =>
         m.name?.startsWith("models/gemini-") && m.supportedGenerationMethods?.includes("generateContent"))
-      .map((m: { name: string }) => m.name.replace(/^models\\//, ""));
+      .map((m: { name: string }) => m.name.replace("models/", ""));
     const preferred = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash"];
     const candidates = [...new Set([...preferred.filter(m => available.includes(m)),
       ...available.filter(m => m.includes("flash")), ...available])];
