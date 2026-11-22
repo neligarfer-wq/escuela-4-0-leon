@@ -16,17 +16,43 @@ export async function POST(request: NextRequest) {
   const messages = raw as ChatMessage[];
   if (messages[messages.length - 1].role !== "user") return reply("Falta la pregunta.", 400);
   try {
-    const upstream = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent", {
-      method: "POST",
-      headers: { "x-goog-api-key": key, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM }] },
-        contents: messages.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] })),
-        generationConfig: { temperature: 0.3, maxOutputTokens: 1200 }
-      }),
-      signal: AbortSignal.timeout(25000),
-      cache: "no-store"
+    const payload = JSON.stringify({
+      systemInstruction: { parts: [{ text: SYSTEM }] },
+      contents: messages.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] })),
+      generationConfig: { temperature: 0.3, maxOutputTokens: 1200 }
     });
+    const callModel = (model: string) => fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
+      {
+        method: "POST",
+        headers: { "x-goog-api-key": key, "Content-Type": "application/json" },
+        body: payload,
+        signal: AbortSignal.timeout(25000),
+        cache: "no-store"
+      }
+    );
+    let upstream = await callModel("gemini-2.5-flash");
+    if (upstream.status === 404) {
+      // A model can be unavailable for a particular API key/project.
+      // Discover supported models rather than assuming another fixed name works.
+      const listing = await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000", {
+        headers: { "x-goog-api-key": key },
+        signal: AbortSignal.timeout(12000),
+        cache: "no-store"
+      });
+      if (listing.ok) {
+        const catalog = await listing.json();
+        const supported = (Array.isArray(catalog.models) ? catalog.models : [])
+          .filter((m: { name?: string; supportedGenerationMethods?: string[] }) =>
+            m.name?.startsWith("models/gemini-") &&
+            m.supportedGenerationMethods?.includes("generateContent"))
+          .map((m: { name: string }) => m.name.replace(/^models\//, ""));
+        const preferred = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash"];
+        const alternate = [...preferred.filter(m => supported.includes(m)), ...supported.filter((m: string) => m.includes("flash"))]
+          .find((m: string) => m !== "gemini-2.5-flash");
+        if (alternate) upstream = await callModel(alternate);
+      }
+    }
     if (upstream.status === 429) return reply("Se ha alcanzado el límite gratuito de Gemini. Inténtalo más tarde.", 429);
     if (upstream.status === 400) return reply("Gemini ha rechazado la solicitud (400). Comprueba el modelo y la configuración del proyecto.", 502);
     if (upstream.status === 401 || upstream.status === 403) return reply("Gemini ha rechazado la autenticación (401/403). Revisa la clave API y sus restricciones.", 502);
