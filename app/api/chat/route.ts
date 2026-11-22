@@ -56,7 +56,17 @@ export async function POST(request: NextRequest) {
     let upstream: Response | undefined;
     for (const model of candidates.slice(0, 5)) {
       upstream = await callModel(model);
-      if (upstream.status !== 404) break;
+      if (upstream.status === 400) {
+        const minimalPayload = JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: SYSTEM + "\\n\\nPregunta: " + messages[messages.length - 1].content }] }]
+        });
+        upstream = await fetch(
+          "https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(model) + ":generateContent",
+          { method: "POST", headers: { "x-goog-api-key": key, "Content-Type": "application/json" },
+            body: minimalPayload, signal: AbortSignal.timeout(25000), cache: "no-store" }
+        );
+      }
+      if (upstream.ok || (upstream.status !== 404 && upstream.status !== 400)) break;
     }
     if (!upstream) return reply("No hay modelos Gemini disponibles.", 502);
     if (!upstream.ok) {
