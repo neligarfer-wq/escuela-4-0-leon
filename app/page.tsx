@@ -96,6 +96,7 @@ export default function Home(){
           <p className="trainingDates"><strong>Semana II:</strong> del 23 al 26 de noviembre</p>
         </div>
       </article>
+      <a className="academyAccess" href="https://cfieleon.centros.educa.jcyl.es/" target="_blank" rel="noreferrer"><span><strong>CFIE de León</strong><small>Consulta próximas convocatorias y actividades formativas</small></span><span className="academyAccessCta">Consultar <ExternalLink size={17}/></span></a>
       <a className="academyAccess" href="https://cfieponferrada.centros.educa.jcyl.es/" target="_blank" rel="noreferrer"><span><strong>CFIE de Ponferrada</strong><small>Consulta próximas convocatorias y actividades formativas</small></span><span className="academyAccessCta">Consultar <ExternalLink size={17}/></span></a>
       <a className="academyAccess" href="https://academy.smarttech.com/#/signup-form" target="_blank" rel="noreferrer"><span><strong>SMART Academy</strong><small>Registro y acceso a la plataforma de formación</small></span><span className="academyAccessCta">Acceder <ExternalLink size={17}/></span></a>
     </section>
