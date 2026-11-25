@@ -45,14 +45,14 @@ function linkedSearch(question:string, found:typeof resources) {
   const seen = new Set<string>();
   const external = links.filter(l=>{try {
     const u=new URL(l.url);
-    if(u.protocol!=="https:" || /\\.(pdf|zip|stl|svg)$/i.test(u.pathname))return false;
-    const scope=u.hostname+u.pathname.replace(/\\/$/,"");
+    if(u.protocol!=="https:" || /\.(pdf|zip|stl|svg)$/i.test(u.pathname))return false;
+    const scope=u.hostname+u.pathname.replace(/\/$/,"");
     if(seen.has(scope) || u.hostname==="www.educa.jcyl.es")return false;
     seen.add(scope);
     return true;
   }catch{return false;}}).slice(0,3).map(l=>{
     const u=new URL(l.url);
-    return {title:"Buscar en "+l.title+" ("+l.resource+")",url:"https://www.google.com/search?q="+encodeURIComponent("site:"+u.hostname+u.pathname.replace(/\\/$/,"")+" "+question)};
+    return {title:"Buscar en "+l.title+" ("+l.resource+")",url:"https://www.google.com/search?q="+encodeURIComponent("site:"+u.hostname+u.pathname.replace(/\/$/,"")+" "+question)};
   });
   return [...direct,...external];
 }
