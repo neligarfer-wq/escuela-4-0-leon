@@ -78,25 +78,23 @@ export default function Home(){
       <div className="trainingUpdatesIntro">
         <span className="kicker">Formación Escuela 4.0</span>
         <h2>Formación y recursos para el profesorado</h2>
-        <p>Consulta aquí las actividades formativas relacionadas con Escuela 4.0. Las actividades con inscripción cerrada se indican expresamente. Consulta las convocatorias de los CFIE para conocer nuevas plazas y fechas.</p>
+        <p>Consulta aquí las actividades formativas relacionadas con Escuela 4.0. Consulta las convocatorias de los CFIE para conocer nuevas plazas y fechas.</p>
       </div>
       <article className="trainingUpdateCard">
         <div>
-          <span className="trainingStatus">Actividad programada · Inscripción cerrada</span>
+          <span className="trainingStatus">Actividad realizada</span>
           <h3>DESCONECTate: Pensamiento computacional sin pantallas</h3>
           <p className="trainingLocation">CFIE de Ponferrada · Infantil, Primaria y Secundaria</p>
           <p className="trainingDates"><strong>Lunes 23 de noviembre:</strong> de 17:30 a 19:30 h</p>
         </div>
-        <p className="trainingCall">Plazo de inscripción finalizado.</p>
       </article>
       <article className="trainingUpdateCard">
         <div>
-          <span className="trainingStatus">Actividad programada · Inscripción cerrada</span>
+          <span className="trainingStatus">Formación en curso</span>
           <h3>Formación específica presencial del CFIE de León</h3>
           <p className="trainingLocation">En sus instalaciones</p>
           <p className="trainingDates"><strong>Semana II:</strong> del 23 al 26 de noviembre</p>
         </div>
-        <p className="trainingCall">Plazo de inscripción finalizado.</p>
       </article>
       <a className="academyAccess" href="https://cfieponferrada.centros.educa.jcyl.es/" target="_blank" rel="noreferrer"><span><strong>CFIE de Ponferrada</strong><small>Consulta próximas convocatorias y actividades formativas</small></span><span className="academyAccessCta">Consultar <ExternalLink size={17}/></span></a>
       <a className="academyAccess" href="https://academy.smarttech.com/#/signup-form" target="_blank" rel="noreferrer"><span><strong>SMART Academy</strong><small>Registro y acceso a la plataforma de formación</small></span><span className="academyAccessCta">Acceder <ExternalLink size={17}/></span></a>
