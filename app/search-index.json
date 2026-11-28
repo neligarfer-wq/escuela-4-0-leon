@@ -58,6 +58,10 @@
     "warning": "",
     "links": [
       {
+        "title": "Guía de actividades de mTiny (PDF)",
+        "url": "https://neligarfer-wq.github.io/escuela-4-0-leon/mtiny-guia-actividades.pdf"
+      },
+      {
         "title": "Guía práctica mTiny",
         "url": "https://support.makeblock.com/hc/en-us/articles/12823234387479-A-Beginner-s-Guide-to-mTiny"
       },
